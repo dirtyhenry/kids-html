@@ -14,9 +14,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "kids-html",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "kids-htmlTests",
-            dependencies: ["kids-html"]),
+            dependencies: ["kids-html"]
+        )
     ]
 )
