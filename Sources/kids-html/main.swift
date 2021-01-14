@@ -14,3 +14,8 @@ let html = render(document)
 let outputURL = URL(fileURLWithPath: "./output.html")
 print(outputURL.path)
 try html.write(to: outputURL, atomically: true, encoding: .utf8)
+
+let prettyHtml = debugRender(document)
+let outputPrettyURL = URL(fileURLWithPath: "./output-pretty.html")
+print(outputPrettyURL.path)
+try prettyHtml.write(to: outputPrettyURL, atomically: true, encoding: .utf8)
