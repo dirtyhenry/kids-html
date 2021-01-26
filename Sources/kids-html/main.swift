@@ -10,12 +10,12 @@ let document: Node = .document(
     )
 )
 
-let html = render(document)
-let outputURL = URL(fileURLWithPath: "./output.html")
-print(outputURL.path)
-try html.write(to: outputURL, atomically: true, encoding: .utf8)
+func output(document: Node, path: String, pretty: Bool = false) throws {
+    let html = pretty ? debugRender(document) : render(document)
+    let outputURL = URL(fileURLWithPath: path)
+    try html.write(to: outputURL, atomically: true, encoding: .utf8)
+    print("Document written to: \(outputURL.path)")
+}
 
-let prettyHtml = debugRender(document)
-let outputPrettyURL = URL(fileURLWithPath: "./output-pretty.html")
-print(outputPrettyURL.path)
-try prettyHtml.write(to: outputPrettyURL, atomically: true, encoding: .utf8)
+try output(document: document, path: "./output.html")
+try output(document: document, path: "./output-pretty.html", pretty: true)
